@@ -1,0 +1,29 @@
+.row {
+  display: flex;
+}
+
+.row > * {
+  padding-right: 10px;
+}
+
+.row > *:last-child {
+  padding-right: 0;
+}
+
+.auto-refresh-toggle {
+  font-size: 10px;
+  background: lightgreen;
+  cursor: pointer;
+  padding: 5px;
+  margin: 0 10px;
+}
+
+.auto-refresh-toggle.off {
+  color: white;
+  background: lightcoral;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+}

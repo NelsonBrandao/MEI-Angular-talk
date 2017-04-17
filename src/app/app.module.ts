@@ -7,6 +7,7 @@ import 'rxjs';
 
 import { AppComponent } from './app.component';
 
+import { DashboardComponent } from '../components/dashboard/dashboard.component';
 import { DashboardCardComponent } from '../components/dashboard-card/dashboard-card.component';
 
 import { TemperatureService } from '../services/temperature.service';
@@ -15,6 +16,7 @@ import { NoiseService } from '../services/noise.service';
 @NgModule({
   declarations: [
     AppComponent,
+    DashboardComponent,
     DashboardCardComponent,
   ],
   imports: [

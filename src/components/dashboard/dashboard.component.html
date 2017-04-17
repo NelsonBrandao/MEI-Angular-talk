@@ -1,0 +1,26 @@
+<h1 class="header">
+  Dashboard
+  <a
+    class="auto-refresh-toggle"
+    (click)="toggleAutoRefresh()"
+    [ngClass]="{
+      on: autoRefreshActive,
+      off: !autoRefreshActive
+    }"
+  >
+    Auto Refresh is {{ autoRefreshActive ? 'On' : 'Off' }}
+  </a>
+</h1>
+<div class="row">
+  <dashboard-card
+    title="Current temperature"
+    [value]="currentTemperature"
+    (onRefresh)="onRefreshTemperature()"
+  ></dashboard-card>
+
+  <dashboard-card
+    title="Current noise"
+    [value]="currentNoise"
+    (onRefresh)="onRefreshNoise()"
+  ></dashboard-card>
+</div>
