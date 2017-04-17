@@ -16,6 +16,17 @@ app.get('/currentTemperature', (req, res) => {
   })
 });
 
+var MAX_WIND = 10;
+var MIN_WIND = 120;
+
+app.get('/currentWindSpeed', (req, res) => {
+  res.json({
+    temperature: Math.floor(
+      Math.random() * (MAX_WIND - MIN_WIND) + MIN_WIND
+    ),
+  })
+});
+
 var MAX_DB = 70;
 var MIN_DB = 30;
 
