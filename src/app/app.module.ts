@@ -7,16 +7,20 @@ import 'rxjs';
 
 import { AppComponent } from './app.component';
 
+import { TemperatureService } from '../services/temperature.service';
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule
   ],
-  providers: [],
+  providers: [
+    TemperatureService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
