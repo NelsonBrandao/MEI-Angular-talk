@@ -1,16 +1,18 @@
-.current-temperature {
-  width: 33.33%;
+.dashboard-card {
+  display: block;
+  width: 300px;
+  padding: 0 10px;
   border: 1px solid lightgrey;
 }
 
-.current-temperature .title {
+.dashboard-card .title {
   font-size: 14px;
   font-weight: bold;
   text-align: center;
   padding: 10px 0;
 }
 
-.current-temperature .value {
+.dashboard-card .value {
   font-size: 52px;
   font-weight: bold;
   text-align: center;

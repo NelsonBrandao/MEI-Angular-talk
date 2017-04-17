@@ -7,14 +7,15 @@ import 'rxjs';
 
 import { AppComponent } from './app.component';
 
-import { CurrentTemperatureComponent } from '../components/current-temperature/current-temperature.component';
+import { DashboardCardComponent } from '../components/dashboard-card/dashboard-card.component';
 
 import { TemperatureService } from '../services/temperature.service';
+import { NoiseService } from '../services/noise.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CurrentTemperatureComponent,
+    DashboardCardComponent,
   ],
   imports: [
     BrowserModule,
@@ -23,6 +24,7 @@ import { TemperatureService } from '../services/temperature.service';
   ],
   providers: [
     TemperatureService,
+    NoiseService,
   ],
   bootstrap: [AppComponent]
 })

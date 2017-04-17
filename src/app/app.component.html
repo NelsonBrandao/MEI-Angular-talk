@@ -2,4 +2,14 @@
   Dashboard
 </h1>
 
-<current-temperature></current-temperature>
+<div class="row">
+  <dashboard-card
+    title="Current temperature"
+    [value]="currentTemperature"
+  ></dashboard-card>
+
+  <dashboard-card
+    title="Current noise"
+    [value]="currentNoise"
+  ></dashboard-card>
+</div>
