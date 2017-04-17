@@ -7,11 +7,14 @@ import 'rxjs';
 
 import { AppComponent } from './app.component';
 
+import { CurrentTemperatureComponent } from '../components/current-temperature/current-temperature.component';
+
 import { TemperatureService } from '../services/temperature.service';
 
 @NgModule({
   declarations: [
     AppComponent,
+    CurrentTemperatureComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,17 @@
+.current-temperature {
+  width: 33.33%;
+  border: 1px solid lightgrey;
+}
+
+.current-temperature .title {
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  padding: 10px 0;
+}
+
+.current-temperature .value {
+  font-size: 52px;
+  font-weight: bold;
+  text-align: center;
+}
