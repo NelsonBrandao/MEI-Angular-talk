@@ -15,12 +15,14 @@
   <dashboard-card
     title="Current temperature"
     [value]="currentTemperature"
+    [history]="temperatureHistory"
     (onRefresh)="onRefreshTemperature()"
   ></dashboard-card>
 
   <dashboard-card
     title="Current noise"
     [value]="currentNoise"
+    [history]="noiseHistory"
     (onRefresh)="onRefreshNoise()"
   ></dashboard-card>
 </div>

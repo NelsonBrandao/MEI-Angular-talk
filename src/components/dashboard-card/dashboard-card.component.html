@@ -11,4 +11,12 @@
   <div class="value">
     {{ value }}
   </div>
+  <ul class="history">
+    <li class="item" *ngFor="let item of history | slice:-5">
+      <small class="time">
+        {{ item.time | date:'medium' }}
+      </small>
+      {{ item.value }}
+    </li>
+  </ul>
 </div>
