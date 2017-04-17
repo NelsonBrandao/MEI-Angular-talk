@@ -1,6 +1,12 @@
 <div class="dashboard-card">
   <div class="title">
     {{ title }}
+    <a
+      class="refresh-icon"
+      (click)="onRefreshClicked()"
+    >
+      ↻
+    </a>
   </div>
   <div class="value">
     {{ value }}

@@ -18,10 +18,25 @@ export class AppComponent implements OnInit {
   ) {}
 
   ngOnInit () {
+    this.updateTemperature();
+    this.updateNoise();
+  }
+
+  onRefreshTemperature () {
+    this.updateTemperature();
+  }
+
+  onRefreshNoise () {
+    this.updateNoise();
+  }
+
+  private updateTemperature () {
     this.temperatureService.getCurrentTemperature()
       .then(response => this.currentTemperature = response.temperature)
     ;
+  }
 
+  private updateNoise () {
     this.noiseService.getCurrentNoise()
       .then(response => this.currentNoise = response.noise)
     ;

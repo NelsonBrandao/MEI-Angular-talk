@@ -5,6 +5,14 @@
   border: 1px solid lightgrey;
 }
 
+.dashboard-card .refresh-icon {
+  font-size: 16px;
+  color: grey;
+  padding-left: 10px;
+  cursor: pointer;
+  user-select: none;
+}
+
 .dashboard-card .title {
   font-size: 14px;
   font-weight: bold;
