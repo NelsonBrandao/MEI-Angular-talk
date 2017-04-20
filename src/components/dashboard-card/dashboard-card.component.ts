@@ -9,6 +9,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class DashboardCardComponent {
   @Input() title: string;
   @Input() value: number;
+  @Input() history: Array<Object>;
   @Output() onRefresh = new EventEmitter();
 
   constructor () {}

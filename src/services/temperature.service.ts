@@ -3,6 +3,8 @@ import { Http } from '@angular/http';
 
 @Injectable()
 export class TemperatureService {
+  history: Array<Object> = [];
+
   constructor (
     private http: Http,
   ) {}
@@ -12,6 +14,14 @@ export class TemperatureService {
       .get('http://localhost:3000/currentTemperature')
       .map(response => response.json())
       .toPromise()
+      .then(response => {
+        this.history.push({
+          time: new Date(),
+          value: response.temperature,
+        });
+
+        return response;
+      })
     ;
   }
 }

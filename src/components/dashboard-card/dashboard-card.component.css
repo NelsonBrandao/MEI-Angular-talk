@@ -25,3 +25,7 @@
   font-weight: bold;
   text-align: center;
 }
+
+.dashboard-card .history .item .time {
+  font-size: 10px;
+}

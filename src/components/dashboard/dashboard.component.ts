@@ -10,10 +10,13 @@ import { NoiseService } from '../../services/noise.service';1
 })
 
 export class DashboardComponent implements OnInit {
+  autoRefreshActive: boolean;
   currentTemperature: number;
   currentNoise: number;
-  autoRefreshActive: boolean;
-  intervalId: any;
+  temperatureHistory: Array<Object>;
+  noiseHistory: Array<Object>;
+
+  private intervalId: any;
 
   constructor (
     private temperatureService: TemperatureService,
@@ -58,12 +61,14 @@ export class DashboardComponent implements OnInit {
   private updateTemperature () {
     this.temperatureService.getCurrentTemperature()
       .then(response => this.currentTemperature = response.temperature)
+      .then(() => this.temperatureHistory = this.temperatureService.history)
     ;
   }
 
   private updateNoise () {
     this.noiseService.getCurrentNoise()
       .then(response => this.currentNoise = response.noise)
+      .then(() => this.noiseHistory = this.noiseService.history)
     ;
   }
 }
