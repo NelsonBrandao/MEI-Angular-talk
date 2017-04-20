@@ -10,7 +10,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "mock-server": "node ./server/",
-    "postinstall": "(cd ./server && yarn install)"
+    "postinstall": "(cd ./server && npm install)"
   },
   "private": true,
   "dependencies": {
