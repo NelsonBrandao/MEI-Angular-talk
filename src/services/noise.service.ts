@@ -7,7 +7,12 @@ export class NoiseService {
 
   constructor (
     private http: Http,
-  ) {}
+  ) {
+    this.getCurrentNoise();
+    this.getCurrentNoise();
+    this.getCurrentNoise();
+    this.getCurrentNoise();
+  }
 
   getCurrentNoise () {
     return this.http

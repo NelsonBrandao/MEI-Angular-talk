@@ -17,6 +17,7 @@
     [value]="currentTemperature"
     [history]="temperatureHistory"
     (onRefresh)="onRefreshTemperature()"
+    (onClick)="goToFullHistory('temperature')"
   ></dashboard-card>
 
   <dashboard-card
@@ -24,5 +25,6 @@
     [value]="currentNoise"
     [history]="noiseHistory"
     (onRefresh)="onRefreshNoise()"
+    (onClick)="goToFullHistory('noise')"
   ></dashboard-card>
 </div>

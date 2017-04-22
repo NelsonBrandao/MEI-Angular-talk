@@ -11,10 +11,15 @@ export class DashboardCardComponent {
   @Input() value: number;
   @Input() history: Array<Object>;
   @Output() onRefresh = new EventEmitter();
+  @Output() onClick = new EventEmitter();
 
   constructor () {}
 
   onRefreshClicked () {
     this.onRefresh.emit();
+  }
+
+  goToFullHistory () {
+    this.onClick.emit();
   }
 }

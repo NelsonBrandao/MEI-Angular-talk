@@ -1,0 +1,17 @@
+<h2>
+  {{ type | titlecase }} History
+  <a routerLink="../">
+    Back
+  </a>
+</h2>
+
+<input placeholder="search" [(ngModel)]="search" />
+
+<ul class="history">
+    <li class="item" *ngFor="let item of history | filter:'value':search">
+      <small class="time">
+        {{ item.time | date:'medium' }}
+      </small>
+      {{ item.value }}
+    </li>
+  </ul>

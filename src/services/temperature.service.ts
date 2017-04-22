@@ -7,7 +7,12 @@ export class TemperatureService {
 
   constructor (
     private http: Http,
-  ) {}
+  ) {
+    this.getCurrentTemperature();
+    this.getCurrentTemperature();
+    this.getCurrentTemperature();
+    this.getCurrentTemperature();
+  }
 
   getCurrentTemperature () {
     return this.http

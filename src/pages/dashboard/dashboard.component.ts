@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { TemperatureService } from '../../services/temperature.service';
 import { NoiseService } from '../../services/noise.service';1
@@ -19,6 +20,7 @@ export class DashboardComponent implements OnInit {
   private intervalId: any;
 
   constructor (
+    private router: Router,
     private temperatureService: TemperatureService,
     private noiseService: NoiseService,
   ) {}
@@ -42,6 +44,11 @@ export class DashboardComponent implements OnInit {
 
   onRefreshNoise () {
     this.updateNoise();
+  }
+
+  goToFullHistory (type: string) {
+    console.log(type);
+    this.router.navigate(['/history'], { queryParams: { type: type } });
   }
 
   private setupAutoRefresh () {
