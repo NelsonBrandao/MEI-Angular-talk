@@ -13,7 +13,6 @@ export class FilterPipe implements PipeTransform {
       return [];
     }
 
-    console.log(items, value, field);
     return items.filter(item => item[field].toString().startsWith(value));
   }
 }
