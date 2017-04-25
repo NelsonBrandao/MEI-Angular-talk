@@ -1,32 +1,36 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http'
+import { Http } from '@angular/http';
+import { Observable, Subject } from 'rxjs';
 
 @Injectable()
 export class NoiseService {
   history: Array<Object> = [];
+  private updateSubject = new Subject();
 
   constructor (
     private http: Http,
-  ) {
-    this.getCurrentNoise();
-    this.getCurrentNoise();
-    this.getCurrentNoise();
-    this.getCurrentNoise();
+  ) {}
+
+  getCurrentNoiseObservable () {
+    return Observable.merge(
+      this.fetchCurrentNoise(),
+      this.updateSubject.flatMap(() => this.fetchCurrentNoise())
+    );
   }
 
-  getCurrentNoise () {
+  updateCurrentNoise () {
+    this.updateSubject.next();
+  }
+
+  private fetchCurrentNoise () {
     return this.http
       .get('http://localhost:3000/currentNoise')
       .map(response => response.json())
-      .toPromise()
-      .then(response => {
-        this.history.push({
-          time: new Date(),
-          value: response.noise,
-        });
-
-        return response;
-      })
+      .map(response => response.noise)
+      .do(noise => this.history.push({
+        time: new Date(),
+        value: noise,
+      }))
     ;
   }
 }

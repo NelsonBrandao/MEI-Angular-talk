@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable, Subscription } from 'rxjs';
 
 import { TemperatureService } from '../../services/temperature.service';
-import { NoiseService } from '../../services/noise.service';1
+import { NoiseService } from '../../services/noise.service';
+
+const AUTO_UPDATE_INTERVAL = 1000 * 1;
 
 @Component({
   selector: 'dashboard',
@@ -17,7 +20,7 @@ export class DashboardComponent implements OnInit {
   temperatureHistory: Array<Object>;
   noiseHistory: Array<Object>;
 
-  private intervalId: any;
+  private autoUpdateSub: Subscription;
 
   constructor (
     private router: Router,
@@ -26,10 +29,17 @@ export class DashboardComponent implements OnInit {
   ) {}
 
   ngOnInit () {
-    this.updateTemperature();
-    this.updateNoise();
+    this.temperatureService
+      .getCurrentTemperatureObservable()
+      .do(() => this.temperatureHistory = this.temperatureService.history)
+      .subscribe(temperature => this.currentTemperature = temperature)
+    ;
 
-    this.setupAutoRefresh();
+    this.noiseService
+      .getCurrentNoiseObservable()
+      .do(() => this.noiseHistory = this.noiseService.history)
+      .subscribe(noise => this.currentNoise = noise)
+    ;
   }
 
   toggleAutoRefresh () {
@@ -39,43 +49,27 @@ export class DashboardComponent implements OnInit {
   }
 
   onRefreshTemperature () {
-    this.updateTemperature();
+    this.temperatureService.updateCurrentTemperature();
   }
 
   onRefreshNoise () {
-    this.updateNoise();
+    this.noiseService.updateCurrentNoise();
   }
 
   goToFullHistory (type: string) {
-    console.log(type);
     this.router.navigate(['/history'], { queryParams: { type: type } });
   }
 
   private setupAutoRefresh () {
     if (this.autoRefreshActive) {
-      this.updateTemperature();
-      this.updateNoise();
 
-      this.intervalId = setInterval(() => {
-        this.updateTemperature();
-        this.updateNoise();
-      }, 1000 * 30);
-    } else {
-      clearInterval(this.intervalId);
+      this.autoUpdateSub = Observable.timer(0, AUTO_UPDATE_INTERVAL)
+        .do(() => this.temperatureService.updateCurrentTemperature())
+        .do(() => this.noiseService.updateCurrentNoise())
+        .subscribe()
+      ;
+    } else if (this.autoUpdateSub) {
+      this.autoUpdateSub.unsubscribe();
     }
-  }
-
-  private updateTemperature () {
-    this.temperatureService.getCurrentTemperature()
-      .then(response => this.currentTemperature = response.temperature)
-      .then(() => this.temperatureHistory = this.temperatureService.history)
-    ;
-  }
-
-  private updateNoise () {
-    this.noiseService.getCurrentNoise()
-      .then(response => this.currentNoise = response.noise)
-      .then(() => this.noiseHistory = this.noiseService.history)
-    ;
   }
 }
