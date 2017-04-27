@@ -17,6 +17,7 @@ import { FilterPipe } from '../pipes/filter.pipe';
 
 import { TemperatureService } from '../services/temperature.service';
 import { NoiseService } from '../services/noise.service';
+import { StorageService } from '../services/storage.service';
 
 const appRoutes: Routes = [
   { path: '', component: DashboardComponent },
@@ -44,6 +45,7 @@ const appRoutes: Routes = [
   providers: [
     TemperatureService,
     NoiseService,
+    StorageService,
   ],
   entryComponents: [
     DashboardComponent,
